@@ -66,6 +66,8 @@ install:
   - cmd: mkdir C:\HDF5
   - cmd: mkdir C:\HDF5\lib
   - ps: Invoke-WebRequest "https://github.com/kkirstein/hdf5-rs/releases/download/alpha/hdf5.dll" -OutFile "C:\HDF5\lib\hdf5.dll"
+  - cmd: set PATH=C:\HDF5\bin;%PATH%
+
 
 
   # Prepend newly installed Python to the PATH of this build (this cannot be
