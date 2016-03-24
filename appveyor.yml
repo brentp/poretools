@@ -61,7 +61,7 @@ install:
   # Install Python (from the official .msi of http://python.org) and pip when
   # not already installed.
   #- ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
-  - ps: & appveyor\install.ps1
+  - ps: "appveyor\install.ps1"
 
    # https://github.com/aldanor/hdf5-rs/blob/master/appveyor.yml
   - cmd: mkdir C:\HDF5
