@@ -1,5 +1,5 @@
 environment:
-  HDF5_LIBDIR: C:\HDF5\lib
+  HDF5_LIBDIR: C:\HDF5
 
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
@@ -63,7 +63,7 @@ install:
   - ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
 
    # https://github.com/aldanor/hdf5-rs/blob/master/appveyor.yml
-   #- cmd: mkdir C:\HDF5
+   - cmd: mkdir C:\HDF5
    #- cmd: mkdir C:\HDF5\lib
    #- ps: Invoke-WebRequest "https://github.com/kkirstein/hdf5-rs/releases/download/alpha/hdf5.dll" -OutFile "C:\HDF5\lib\hdf5.dll"
    #- cmd: set PATH=C:\HDF5\bin;%PATH%
@@ -73,7 +73,7 @@ install:
   # Prepend newly installed Python to the PATH of this build (this cannot be
   # done from inside the powershell script as it would require to restart
   # the parent CMD process).
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%;C:\\HDF5\"
 
   # Check that we have the expected version and architecture for Python
   - "python --version"
@@ -87,7 +87,8 @@ install:
   # compiled extensions and are not provided as pre-built wheel packages,
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
-  - "%CMD_IN_ENV% conda install h5py"
+  - ps: Invoke-WebRequest "https://pypi.python.org/packages/2.7/h/h5py/h5py-2.5.0.win32-py2.7.exe" -OutFile "C:\HDF5\h5py-2.5.0.win32-py2.7.exe"
+  - "%CMD_IN_ENV% C:\HDF5\h5py-2.5.0.win32-py2.7.exe"
   - "%CMD_IN_ENV% pip install -r requirements.txt"
 
 build_script:
