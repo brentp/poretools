@@ -93,10 +93,10 @@ install:
   # target Python version and architecture
   #
   - ps: if ($env:PYTHON_ARCH -eq "32") { `
-        Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/h5py-2.5.0-cp27-none-win32.whl" -OutFile "C:\HDF5\h5py-2.5.0-cp27-none-win32.whl" `
+        Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/h5py-2.5.0-cp27-none-win32.whl" -OutFile "C:\HDF5\h5py-2.5.0-cp27-none-win32.whl";
         %CMD_IN_ENV% pip install C:\\HDF5\\h5py-2.5.0-cp27-none-win32.whl `
         } else { `
-        Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/h5py-2.5.0-cp27-none-win64.whl" -OutFile "C:\HDF5\h5py-2.5.0-cp27-none-win64.whl" `
+        Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/h5py-2.5.0-cp27-none-win64.whl" -OutFile "C:\HDF5\h5py-2.5.0-cp27-none-win64.whl";
         %CMD_IN_ENV% pip install C:\\HDF5\\h5py-2.5.0-cp27-none-win32.whl `
         }
 
