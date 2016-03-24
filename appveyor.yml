@@ -63,7 +63,7 @@ install:
   - ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
 
    # https://github.com/aldanor/hdf5-rs/blob/master/appveyor.yml
-   - cmd: mkdir C:\HDF5
+  - cmd: mkdir C:\HDF5
    #- cmd: mkdir C:\HDF5\lib
    #- ps: Invoke-WebRequest "https://github.com/kkirstein/hdf5-rs/releases/download/alpha/hdf5.dll" -OutFile "C:\HDF5\lib\hdf5.dll"
    #- cmd: set PATH=C:\HDF5\bin;%PATH%
@@ -73,9 +73,9 @@ install:
   # Prepend newly installed Python to the PATH of this build (this cannot be
   # done from inside the powershell script as it would require to restart
   # the parent CMD process).
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%;C:\\HDF5\"
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%;C:\\HDF5"
 
-  # Check that we have the expected version and architecture for Python
+    # Check that we have the expected version and architecture for Python
   - "python --version"
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
 
