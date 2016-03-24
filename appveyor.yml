@@ -1,4 +1,6 @@
 environment:
+  HDF5_LIBDIR: C:\HDF5\lib
+
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -59,6 +61,10 @@ install:
   # Install Python (from the official .msi of http://python.org) and pip when
   # not already installed.
   - ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
+
+   # https://github.com/aldanor/hdf5-rs/blob/master/appveyor.yml
+  - ps: Invoke-WebRequest "https://github.com/kkirstein/hdf5-rs/releases/download/alpha/hdf5.dll" -OutFile "C:\HDF5\lib\hdf5.dll"
+
 
   # Prepend newly installed Python to the PATH of this build (this cannot be
   # done from inside the powershell script as it would require to restart
