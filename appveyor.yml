@@ -63,6 +63,8 @@ install:
   - ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
 
    # https://github.com/aldanor/hdf5-rs/blob/master/appveyor.yml
+  - cmd: mkdir C:\HDF5
+  - cmd: mkdir C:\HDF5\lib
   - ps: Invoke-WebRequest "https://github.com/kkirstein/hdf5-rs/releases/download/alpha/hdf5.dll" -OutFile "C:\HDF5\lib\hdf5.dll"
 
 
