@@ -98,9 +98,13 @@ install:
     #
   - ps: Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/matplotlib-1.5.1-cp27-none-win32.whl" -OutFile "C:\HDF5\matplotlib-1.5.1-cp27-none-win32.whl"
     #- "%CMD_IN_ENV% C:\\HDF5\\h5py-2.5.0.win32-py2.7.exe"
-  - "%CMD_IN_ENV% pip install wheel"
-  - "%CMD_IN_ENV% pip install nose"
   - "%CMD_IN_ENV% pip install C:\\HDF5\\matplotlib-1.5.1-cp27-none-win32.whl"
+
+
+  - ps: Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/seaborn-0.7.0-py2.py3-none-any.whl" -OutFile "C:\HDF5\seaborn-0.7.0-py2.py3-none-any.whl"
+    #- "%CMD_IN_ENV% C:\\HDF5\\h5py-2.5.0.win32-py2.7.exe"
+  - "%CMD_IN_ENV% pip install C:\\HDF5\\seaborn-0.7.0-py2.py3-none-any.whl"
+
 
 build_script:
   # Build the compiled extension
