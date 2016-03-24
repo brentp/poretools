@@ -121,7 +121,7 @@ install:
 
   - ps: Invoke-WebRequest "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/seaborn-0.7.0-py2.py3-none-any.whl" -OutFile "C:\HDF5\seaborn-0.7.0-py2.py3-none-any.whl"
     #- "%CMD_IN_ENV% C:\\HDF5\\h5py-2.5.0.win32-py2.7.exe"
-  - "%CMD_IN_ENV% pip install C:\\HDF5\\seaborn-0.7.0-py2.py3-none-any.whl"
+  - ps: pip install C:\\HDF5\\seaborn-0.7.0-py2.py3-none-any.whl"
 
 
 build_script:
@@ -131,6 +131,7 @@ build_script:
 test_script:
   # Run the project tests
   - "%CMD_IN_ENV% python setup.py nosetests"
+  - "%CMD_IN_ENV% poretools -h"
 
 after_test:
   # If tests are successful, create binary packages for the project.
