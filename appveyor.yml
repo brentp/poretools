@@ -93,7 +93,7 @@ install:
     #- "%CMD_IN_ENV% C:\\HDF5\\h5py-2.5.0.win32-py2.7.exe"
   - "%CMD_IN_ENV% pip install wheel"
   - "%CMD_IN_ENV% pip install C:\\HDF5\\h5py-2.5.0-cp27-none-win32.whl"
-  - "%CMD_IN_ENV% pip install -r requirements.txt"
+    #- "%CMD_IN_ENV% pip install -r requirements.txt"
 
 build_script:
   # Build the compiled extension
